@@ -1,12 +1,11 @@
 {
-  "short_name": "Liv Victorino | Website",
+  "short_name": "Liv Victorino | Official Website",
   "name": "Liv Victorino | Website",
   "icons": [
     {
-      "src": "durn.png",
-      "type": "image/png",
-      "sizes": "265x265"
-    }
+      "src": "favicon.ico",
+      "sizes": "265x265",
+      "type": "image/png"}
   ],
   "start_url": ".",
   "display": "standalone",
