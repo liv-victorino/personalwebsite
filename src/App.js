@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 //import { render } from 'react-dom';
-import { Route, Switch} from 'react-router-dom'; 
+import { Route, Routes} from 'react-router-dom'; 
 import Blog from './Blog'
 //import express from "express"
 import Questions from "./Questions"
@@ -52,10 +52,10 @@ function App() {
        
       <hr></hr>
       <div className='postlist'>
-      <Switch>
-            <Route path="/" element={<Blog />}></Route>
-            <Route path="/questions" element={<Questions questionsMock={userSubmission} changeSubmission={setSubmission}></Questions>}></Route>
-      </Switch>
+      <Route>
+            <Routes path="/" element={<Blog />}></Routes>
+            <Routes path="/questions" element={<Questions questionsMock={userSubmission} changeSubmission={setSubmission}></Questions>}></Routes>
+      </Route>
       </div>
       </div>
   );
