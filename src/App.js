@@ -52,10 +52,10 @@ function App() {
        
       <hr></hr>
       <div className='postlist'>
-      <Route>
-            <Routes path="/" element={<Blog />}></Routes>
-            <Routes path="/questions" element={<Questions questionsMock={userSubmission} changeSubmission={setSubmission}></Questions>}></Routes>
-      </Route>
+      <Routes>
+            <Route path="/" element={<Blog />}></Route>
+            <Route path="/questions" element={<Questions questionsMock={userSubmission} changeSubmission={setSubmission}></Questions>}></Route>
+      </Routes>
       </div>
       </div>
   );
