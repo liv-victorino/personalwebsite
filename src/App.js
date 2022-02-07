@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 //import { render } from 'react-dom';
-import { Route, Routes} from 'react-router-dom'; 
+import { BrowserRouter, Route, Routes} from 'react-router-dom'; 
 import Blog from './Blog'
 //import express from "express"
 import Questions from "./Questions"
@@ -52,10 +52,12 @@ function App() {
        
       <hr></hr>
       <div className='postlist'>
+      <BrowserRouter>
       <Routes>
-            <Route path="/" element={<Blog />}></Route>
-            <Route path="/questions" element={<Questions questionsMock={userSubmission} changeSubmission={setSubmission}></Questions>}></Route>
+            <Route exact path="/" element={<Blog />}></Route>
+            <Route exact path="/questions" element={<Questions questionsMock={userSubmission} changeSubmission={setSubmission}></Questions>}></Route>
       </Routes>
+      </BrowserRouter>
       </div>
       </div>
   );
