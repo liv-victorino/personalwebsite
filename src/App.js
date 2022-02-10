@@ -47,7 +47,7 @@ function App() {
         <a className="link" href="https://open.spotify.com/artist/3YIrk6wfKAjdNp3hwaZPyQ?si=MhN4l-TXSP6lhHV7MDvpZQ">Spotify :)</a>
         <a className="link" href="https://livvictorino.bandcamp.com/album/sheer-force-of-will">Bandcamp :^)</a>
         <a className="link" href="https://www.youtube.com/channel/UC2Dlu_LLlFjDIw2zr3Abm2g">YouTube ,':)</a>
-        <a className='link' style={{color: "#C0DFFF"}} href="http://liv-victorino.com/questions">SECRET</a>
+        <a className='link' style={{color: "#C0DFFF"}} href="https://www.liv-victorino.com/questions">SECRET</a>
       </div>
        
       <hr></hr>
