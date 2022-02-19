@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+## Info 441 Final Project: Blog and Advice Column
+## Olivia Victorino
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction
+My hobby outside of school is being a performer. I like to play and record music for my friends. I’d like to expand the interaction between myself and my friends to an online sphere, namely through a personal website. My target audience are those who enjoy reading blogs and also enjoy listening to my music. My idea is to create an advice column - a two-way online interaction platform between myself and an audience. Visitors have the option of creating a unique username and password, and have questions be associated with their account. They also have the option of posting anonymously. I would like to build it on my own because part of my philosophy, which carries into my music, is DIY. As a developer, I want to build this app in order to strengthen my understanding of the deployment side of web development, in a real-life higher stakes environment. 
 
-## Available Scripts
+# Diagram
+![diagram]()
 
-In the project directory, you can run:
+# Priority List
+![priority-list]()
 
-### `npm start`
+# Endpoints
+- /admin - for myself and other “bloggers”, if I were to duplicate this project for someone else
+- /questions - to load the questions page
+- GET /questions/id to load questions, POST questions/id to add questions
+- /login - loads the optional login page
+- /logout - loads the logout page and destroys the session
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Schema for MongoDB:
+```Javascript
+  const questionsPostSchema= new mongoose.Schema({
+    username: String,
+    body: String,
+    created_date: Date,
+    reply: String
+  })
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  const blogPostSchema= new mongoose.Schema({
+    title: String,
+    grabber: String,
+    body: String,
+    created_date: Date,
+  })
+```
