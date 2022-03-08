@@ -89,7 +89,7 @@ app.get("/posts", async function(req, res) {
     res.send(allQuestions)
 
 })
-//app.listen(5000);
+app.listen(5000);
 
 //this is pretty whacky that you can share a database connection? i guess that's what mongoose is for
 //export default db; 
