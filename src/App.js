@@ -7,34 +7,6 @@ import Blog from './Blog'
 import Questions from "./Questions"
 
 
-//firebase
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAF13vPjH5irg6Lkou-jdOv1qSL3bP44zA",
-  authDomain: "personalsite-f5ed9.firebaseapp.com",
-  projectId: "personalsite-f5ed9",
-  storageBucket: "personalsite-f5ed9.appspot.com",
-  messagingSenderId: "700002163876",
-  appId: "1:700002163876:web:38f697fe84abbbc0471a31",
-  measurementId: "G-R0YN8GBV7K"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-
-
-
-
 function App() {
   const [userSubmission, setSubmission] = useState();
   //showing={isShown} changeShowing={setIsShown}

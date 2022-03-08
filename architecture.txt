@@ -1,0 +1,103 @@
+-/ public || 
+    -/javascripts
+        -index.js || MAKES THE FETCH REQUESTS TO THE API
+            {loadPosts(), postUrl(), previewUrl(), likePost(), refreshComments(), toggleComments()}
+        -identity.js || MAKES FETCH REQUESTS TO DISPLAY IDENTITY INFORMATION
+            {loadIdentity()}
+        -userInfo.js || MAKES REQUESTS THAT DEAL WITH USER SPECIFIC LOADS
+            {deletePost(), loadUserInfoPosts(), loadUserInfo(), saveUserInfo(), init()}
+        -api_version.js
+    -/stylesheets
+    -index.html || LANDING PAGE, GRAB AND LOAD STUFF TO IT (not react based i guess??)
+    -userInfo.html || LINK TO THIS WHEN CLICKED ON USER IDENTITY PAGE via userInfo.html?user={username}.. i guess this gets fed into an express endpoint anyway?
+
+-/ routes
+    -/api
+        -v3
+            -apiv3.js || the big one
+                THIS IS THE API THAT THE PUBLIC INTERFACE CALLS WHEN IT WANTS SOMETHING
+
+                provides all the endpoints for every call in each of the public js files.
+
+                also contains the html logic for rendering one post
+
+                 /changeUserInfo - post/get
+                /posts - post
+                /getUserInfo - get/post
+                /likePost/unlikePost - post
+                    ...
+                    ...
+                    ...
+
+-db.js || ESTABLISHES CONNECTION TO MONGODB AND SHARES THE CONNECTION THROUGH A DATABASE JSON OBJECT
+    {dbConnect(), schema declarations}
+-app.js || MIDDLEWARE, HANDLES LOGIN INFO, SESSIONS, DATABASE CONNECTION VIA MIDDLEWARE, LOGIN REDIRECTS
+
+
+---
+PLANNING FOR FINAL
+---
+
+CURRENT PROJECT ARCHITECTURE
+
+-/public
+
+-/src
+
+
+Broadly what needs to happen
+
+1. establish a database connection for the questions DONE BUT NOT PUBLISHED
+2. establish login/logout capabilities via azure for ADMINS??? :0 
+    2.1. design a new page where you can edit the blog posts.
+    2.2 is there a way to make azure give certain roles to certain emails :(
+        - consider making your own login, though probably very unsafe?? kyle did show you how ...
+3. programmatically load blog posts
+4. LAST PRIORITY: 
+    write a way to load all submitted questions to and admin, then a way to respond to them, and then a way to publish them
+
+Procedure:
+
+1. make questions submittable to a backend, and immediately viewable on the site
+    -establish mongodb backend connection
+    -do you load them as html or as a react component? it's probably smarter to make them react components...
+        - but how do you connect a react component to MONGODB???
+            -user submits a question
+            -it goes to the database
+            -then on click, i guess you rerender the page, the new question gets rerendered as a card, a component in a flexbox container.
+    - you can reuse this exact code for the post creation portion available to admins
+2. create a login page for admin of the site
+    - figure out how you want a user to login - watch lectures. and establish. go fast!
+    - if logged in, write another route that takes them to a post creation page
+    - write a post creation page, that gives title, post, and date. make it easy.
+    -if possible, write another page that allows admin to respond to questions - this should be established in the schema of a comment.
+3. 
+
+
+- /admin - for myself and other “bloggers”, if I were to duplicate this project for someone else
+- /questions - to load the questions page
+- GET /questions/id to load questions, POST questions/id to add questions
+- /login - loads the optional login page
+- /logout - loads the logout page and destroys the session
+
+
+
+______________
+REQUIREMENT
+______________
+
+100 For Strong Coding Practice
+
+Your project must have at least these three components: client code, API endpoints, and some sort of external storage
+
+(20 points) - client code (html/css/js)
+(30 points) - API endpoints (that do more than just return html/css/js files)
+(30 points) -  external storage (e.g., a mongodb database) 
+(20 points) - Follow good dev practices
+(10 points) Handle errors gracefully (e.g., show error messages rather than crashing or failing silently)
+(10 points) - Code readability. Avoid writing spaghetti/coupled/Big-Ball-of-Mud (Links to an external site.) code, putting all code into a single file, etc. Document key parts appropriately (for your own benefit)
+
+
+
+
+
