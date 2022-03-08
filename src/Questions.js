@@ -13,7 +13,7 @@ function Questions (){
 
 
         const fetchData = async () => {
-            const response = await fetch(`https://liv-victorino.com/posts`);
+            const response = await fetch(`/posts`);
             const newData = await response.json();
             //console.log(JSON.stringify(newData))
             setState(newData)

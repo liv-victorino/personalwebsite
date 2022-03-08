@@ -19,7 +19,7 @@ class QuestionsForm extends React.Component {
         try {
 
            // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("https://liv-victorino.com/posts",
+            let response = fetch("/posts",
             
             {
                 method: "POST",
