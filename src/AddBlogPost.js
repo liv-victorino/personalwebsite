@@ -2,30 +2,33 @@
 import React from 'react'
 
 
-class QuestionsForm extends React.Component {
+class AddBlogPost extends React.Component {
     constructor(props) {
       super(props);
       this.state = {value: ''};
-      
+
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.bpRef = React.createRef();
+      this.bpRef2 = React.createRef();
+
     }
   
     handleChange(event) {
       this.setState({value: event.target.value});
-      console.log(this.state)
     }
   
     handleSubmit = async function (event) {
 
-        //console.log("fuck")
+
         try {
+
            // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("http://localhost:5000/posts",
+            let response = fetch("http://localhost:5000/addblogpost",
             
             {
                 method: "POST",
-                body: JSON.stringify({body: this.state.value}),
+                body: JSON.stringify({title: this.bpRef.current.value, body: this.state.value, id: this.props.post}),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -41,16 +44,22 @@ class QuestionsForm extends React.Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <label>
-            
-            <input type="text" placeholder="keep it real" className="question" value={this.state.value} onChange={this.handleChange} />
-          </label>
+            <div>          <label>
+            Title: 
+            <input ref={this.bpRef} className="reply" type="text" onChange={this.handleChange} />
+          </label></div>
+
+          <div>          <label>
+            Body: 
+            <input ref={this.bpRef2} className="question" type="text" onChange={this.handleChange} />
+          </label></div>
+
           <input type="submit" value="Submit" />
         </form>
       );
     }
   }
 
-  export default QuestionsForm;
+  export default AddBlogPost;
 
-export { QuestionsForm };
+export { AddBlogPost };

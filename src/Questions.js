@@ -11,17 +11,27 @@ function Questions (){
 
 
     const [state, setState] = useState([])
+    const [userState, setUserState] = useState()
+
     useEffect(() => {
 
+        const isLoggedIn = async () => {
+            const response = await fetch(`http://localhost:5000/isAdmin`);
+            const newData = await response.json();
 
+            console.log(JSON.stringify(newData))
+          };
         const fetchData = async () => {
-            const response = await fetch(`https://personalsite-backend.herokuapp.com/posts`);
+            const response = await fetch(`http://localhost:5000/posts`);
             const newData = await response.json();
             //console.log(JSON.stringify(newData))
             setState(newData)
             //console.log("this isthe state now: " + JSON.stringify(state))
           };
-        
+
+
+          isLoggedIn();
+
           fetchData();
         
 
@@ -52,7 +62,8 @@ function Questions (){
                 <br></br>
                 replies: <div style={{color: "blue"}}>{d.reply}</div>
                 <div className="admin-reply">
-                    <ReplyForm post={d._id}></ReplyForm>              
+                    {console.log("the userstate is " + userState)}
+               <ReplyForm post={d._id}></ReplyForm>       
                     </div>
                 <br></br>
                 </div>
