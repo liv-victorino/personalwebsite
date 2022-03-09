@@ -28,7 +28,7 @@ class AddBlogPost extends React.Component {
             
             {
                 method: "POST",
-                body: JSON.stringify({title: this.bpRef.current.value, body: this.state.value, id: this.props.post}),
+                body: JSON.stringify({title: this.bpRef.current.value, body: bpRef2.current.value}),
                 headers: {
                     'Content-Type': 'application/json'
                 }
