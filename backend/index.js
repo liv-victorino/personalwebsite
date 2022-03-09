@@ -1,10 +1,12 @@
 
 import mongoose from "mongoose"
 
+
 //code that connects to the mongodb database
 //need async function
 
 dbConnect().catch(err => console.log(err))
+
 
 
 let db = {} // this is new - contains all the different models
@@ -46,6 +48,32 @@ console.log("added schema and model")
 import express from 'express'
 const app = express();
 import cors from "cors"
+import sessions from 'express-session'
+
+
+
+
+//session
+const oneDay = 1000 * 60 * 60 * 24;
+
+app.use(sessions({
+  secret: "wtf lol lmao omg o.k.",
+  saveUninitialized: true,
+  cookie: { maxAge: oneDay },
+  resave: false
+}))
+
+
+
+
+
+
+
+
+
+
+
+
 
 //console.log("App listen at port 5000");
 app.use(express.json());
@@ -89,6 +117,73 @@ app.get("/posts", async function(req, res) {
     res.send(allQuestions)
 
 })
+
+
+//SESSION SHIT SESSION SHIT SESSION SHIT
+ 
+
+
+app.post('/reply', async function(req, res){
+  //let session = req.session
+
+  console.log(req.body.body)
+  console.log(req.body.id)
+  try {
+      const updateDoc = {
+          $set: {
+              reply: req.body.body
+          },
+        };
+      await db.Questions.updateOne({_id: req.body.id},updateDoc, {upsert: true})
+  } catch (error) {
+      
+  }
+  
+})
+
+app.get('/', function(req, res, next) {
+  let session = req.session
+  if(session.userid){
+    res.send('respond with a resource for the user: ' + session.userid);
+  } else {
+    res.send('ERROR: You must be logged in to see this information!')
+  }
+});
+
+app.post("/login", function(req, res, next) {
+  let session = req.session
+
+  if(session.userid){
+    res.send("Error: You are already logged in as " + session.userid)
+    return
+  }
+
+  //check username and password
+  if(req.body.username == "liverino" && req.body.password == "my_password_1"){
+    session.userid = "liverino"
+    console.log(session)
+    res.send("you logged in")
+  } else { 
+    //not start session
+    req.session.destroy()
+    res.send("wrong login info")
+  }
+})
+
+app.post("/logout", function(req, res, next) {
+  req.session.destroy()
+  res.send("you are logged out")
+})
+
+
+
+
+
+
+
+
+
+
 app.listen(5000);
 
 //this is pretty whacky that you can share a database connection? i guess that's what mongoose is for

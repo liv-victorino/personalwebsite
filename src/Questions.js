@@ -1,5 +1,7 @@
 import './App.css'
 import QuestionsForm from './QuestionsForm';
+import ReplyForm from './ReplyForm';
+
 import React, { useState, useEffect } from 'react';
 
 
@@ -13,7 +15,7 @@ function Questions (){
 
 
         const fetchData = async () => {
-            const response = await fetch(`/posts`);
+            const response = await fetch(`https://personalsite-backend.herokuapp.com/posts`);
             const newData = await response.json();
             //console.log(JSON.stringify(newData))
             setState(newData)
@@ -47,8 +49,11 @@ function Questions (){
                 <div>
                 <h3>{d.body}</h3>
                 posted on: {d.created_date}
-
                 <br></br>
+                replies: <div style={{color: "blue"}}>{d.reply}</div>
+                <div className="admin-reply">
+                    <ReplyForm post={d._id}></ReplyForm>              
+                    </div>
                 <br></br>
                 </div>
                 
