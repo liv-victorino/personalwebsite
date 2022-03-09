@@ -14,7 +14,7 @@ function Login() {
         } 
         let response = await fetch(
             //https://personalsite-backend.herokuapp.com/
-            "http://localhost:5000/login",
+            "https://personalsite-backend.herokuapp.com/login",
             {
                 method: "POST",
                 body: JSON.stringify(loginData),
@@ -29,7 +29,7 @@ function Login() {
     
     async function logout(){
         let response = await fetch(
-            'http://localhost:5000/logout',
+            'https://personalsite-backend.herokuapp.com/logout',
             {
                 method: "POST"
             }

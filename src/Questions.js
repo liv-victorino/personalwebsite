@@ -16,13 +16,13 @@ function Questions (){
     useEffect(() => {
 
         const isLoggedIn = async () => {
-            const response = await fetch(`http://localhost:5000/isAdmin`);
+            const response = await fetch(`https://personalsite-backend.herokuapp.com/isAdmin`);
             const newData = await response.json();
 
             console.log(JSON.stringify(newData))
           };
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/posts`);
+            const response = await fetch(`https://personalsite-backend.herokuapp.com/posts`);
             const newData = await response.json();
             //console.log(JSON.stringify(newData))
             setState(newData)

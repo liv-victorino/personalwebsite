@@ -21,7 +21,7 @@ class QuestionsForm extends React.Component {
         //console.log("fuck")
         try {
            // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("http://localhost:5000/posts",
+            let response = fetch(https://personalsite-backend.herokuapp.com/posts",
             
             {
                 method: "POST",

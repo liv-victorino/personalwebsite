@@ -16,7 +16,7 @@ function NewBlog (){
 
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/addblogpost`);
+            const response = await fetch(`https://personalsite-backend.herokuapp.com/addblogpost`);
             const newData = await response.json();
             //console.log(JSON.stringify(newData))
             setState(newData)
