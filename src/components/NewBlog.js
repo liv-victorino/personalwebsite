@@ -1,4 +1,4 @@
-import './App.css'
+import '../App.css'
 import AddBlogPost from './AddBlogPost';
 
 import React, { useState, useEffect } from 'react';
@@ -49,7 +49,7 @@ function NewBlog (){
             <>
             {state.map( d => 
             
-                <div>
+                <div className="post">
                 <h3>{d.title}</h3>
                 posted on: {d.created_date}
                 <div>{d.body}</div>

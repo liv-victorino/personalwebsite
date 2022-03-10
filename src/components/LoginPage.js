@@ -1,10 +1,9 @@
-import Questions from './Questions'
 
 
 
 
 
-function Login() {
+function Login(props) {
     async function login(){
         let username = document.getElementById("username_input").value
         let password = document.getElementById("password_input").value
@@ -23,8 +22,12 @@ function Login() {
                   }
             }
         );
-        let responesText = await response.text();
-        document.getElementById("results").innerText = responesText;
+        let responesText = await response.json();
+        console.log("props before anything" + JSON.stringify(props.user))
+        props.userChange({username: responesText.userid})
+        console.log(JSON.stringify(props.user))
+
+        document.getElementById("results").innerText = responesText.userid;
     }
     
     async function logout(){
@@ -35,6 +38,8 @@ function Login() {
             }
         )
         let responesText = await response.text();
+        props.userChange({username: ""})
+
         document.getElementById("results").innerText = responesText;
     }
     return(  <div><h3>login</h3>

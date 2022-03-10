@@ -1,7 +1,7 @@
-import './App.css'
+import '../App.css'
 import QuestionsForm from './QuestionsForm';
 import ReplyForm from './ReplyForm';
-
+import Login from './LoginPage'
 import React, { useState, useEffect } from 'react';
 
 
@@ -11,16 +11,18 @@ function Questions (){
 
 
     const [state, setState] = useState([])
-    const [userState, setUserState] = useState()
+    const [userState, setUserState] = useState({username: ""})
 
+    
     useEffect(() => {
 
-        const isLoggedIn = async () => {
+/*         const isLoggedIn = async () => {
             const response = await fetch(`https://personalsite-backend.herokuapp.com/isAdmin`);
             const newData = await response.json();
 
             console.log(JSON.stringify(newData))
           };
+         */
         const fetchData = async () => {
             const response = await fetch(`https://personalsite-backend.herokuapp.com/posts`);
             const newData = await response.json();
@@ -30,7 +32,7 @@ function Questions (){
           };
 
 
-          isLoggedIn();
+          //sLoggedIn();
 
           fetchData();
         
@@ -44,9 +46,8 @@ function Questions (){
 
 
 
-
     return(
-
+        
         <div className="postList">
             <h1 style={{color: "red"}}>this page does not allow questions yet. it is here for cool factor.</h1>
             <h2>questions and advice</h2>
@@ -56,20 +57,30 @@ function Questions (){
             <>
             {state.map( d => 
             
-                <div>
+                <div className="post">
                 <h3>{d.body}</h3>
                 posted on: {d.created_date}
                 <br></br>
                 replies: <div style={{color: "blue"}}>{d.reply}</div>
                 <div className="admin-reply">
-                    {console.log("the userstate is " + userState)}
-               <ReplyForm post={d._id}></ReplyForm>       
+                    {console.log("the userstate is " + JSON.stringify(userState.username))}
+            
+               {
+               console.log(JSON.stringify(userState.username) === "liverino")}{
+               userState.username === "liverino" &&
+               
+               
+               <ReplyForm post={d._id}></ReplyForm>     
+               
+               }  
                     </div>
                 <br></br>
                 </div>
                 
                 )}        
             </>
+
+            <Login user={userState} userChange={setUserState}></Login>
         </div>
 
 
