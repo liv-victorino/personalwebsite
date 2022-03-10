@@ -49,7 +49,6 @@ function Questions (){
     return(
         
         <div className="postList">
-            <h1 style={{color: "red"}}>this page does not allow questions yet. it is here for cool factor.</h1>
             <h2>questions and advice</h2>
             <QuestionsForm></QuestionsForm>
 
