@@ -1,7 +1,7 @@
 
 
 
-
+//this Login function renders login buttons and sends the results to the backend.
 
 function Login(props) {
     async function login(){
@@ -11,36 +11,50 @@ function Login(props) {
             username: username,
             password: password
         } 
-        let response = await fetch(
-            //https://personalsite-backend.herokuapp.com/
-            "https://personalsite-backend.herokuapp.com/login",
-            {
-                method: "POST",
-                body: JSON.stringify(loginData),
-                headers: {
-                    'Content-Type': 'application/json'
-                  }
-            }
-        );
-        let responesText = await response.json();
-        console.log("props before anything" + JSON.stringify(props.user))
-        props.userChange({username: responesText.userid})
-        console.log(JSON.stringify(props.user))
 
-        document.getElementById("results").innerText = responesText.userid;
+        let confirmation = ""
+
+        try {
+            let response = await fetch(
+                //http://localhost:5000/
+                "http://localhost:5000/login",
+                {
+                    method: "POST",
+                    body: JSON.stringify(loginData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                      }
+                }
+            );
+            let responesText = await response.json();
+            props.userChange({username: responesText.userid})
+            confirmation = "login succeeded, answer a question or log out"
+        } catch (error) {
+            confirmation = "login error: " + error
+        }
+        document.getElementById("results").innerText = confirmation;
+
     }
     
     async function logout(){
+        let confirmation = ""
+
+        try {
+            
         let response = await fetch(
-            'https://personalsite-backend.herokuapp.com/logout',
+            'http://localhost:5000/logout',
             {
                 method: "POST"
             }
         )
         let responesText = await response.text();
         props.userChange({username: ""})
+            confirmation = "logout succeeded"
+        } catch (error) {
+            confirmation = "logout error: " + error
+        }
+        document.getElementById("results").innerText = confirmation;
 
-        document.getElementById("results").innerText = responesText;
     }
     return(  <div><h3>login</h3>
     Username: <input type="text" id="username_input"></input><br></br>
@@ -53,10 +67,6 @@ function Login(props) {
     
     </div>)
 }
-//somehow need to load the questions again but with an option to edit their replies...
-//possible to have admin go back to questions page and display reply boxes for each??
-
-
 export default Login;
 
 export { Login };

@@ -1,6 +1,7 @@
 
 import React from 'react'
 
+//This QuestionsForm component renders a questions input and sends the response to mongodb
 
 class QuestionsForm extends React.Component {
     constructor(props) {
@@ -18,10 +19,9 @@ class QuestionsForm extends React.Component {
   
     handleSubmit = async function (event) {
 
-        //console.log("fuck")
+        let confirmation = ""
         try {
-           // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("https://personalsite-backend.herokuapp.com/posts",
+            let response = fetch("http://localhost:5000/posts",
             
             {
                 method: "POST",
@@ -32,14 +32,18 @@ class QuestionsForm extends React.Component {
             
             })
 
+            confirmation = "question posted"
+            document.getElementById("QFormConfirmation").innerText = confirmation
 
         } catch (error) {
-            console.log(error)
+            confirmation = "error: " + error
+            document.getElementById("QFormConfirmation").innerText = confirmation
         }
     }
   
     render() {
       return (
+        <div>
         <form onSubmit={this.handleSubmit}>
           <label>
             
@@ -47,6 +51,9 @@ class QuestionsForm extends React.Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
+        <div id="QFormConfirmation"></div>
+
+        </div>
       );
     }
   }

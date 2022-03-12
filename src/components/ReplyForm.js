@@ -16,10 +16,11 @@ class ReplyForm extends React.Component {
     }
   
     handleSubmit = async function (event) {
+      let confirmation = ""
         try {
 
            // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("https://personalsite-backend.herokuapp.com/reply",
+            let response = fetch("http://localhost:5000/reply",
             
             {
                 method: "POST",
@@ -31,20 +32,26 @@ class ReplyForm extends React.Component {
             })
 
 
+            confirmation = "reply posted"
+            document.getElementById("ReplyFormConfirmation").innerText = confirmation
         } catch (error) {
-            console.log(error)
+          confirmation = "error: " + error
+            document.getElementById("ReplyFormConfirmation").innerText = confirmation
         }
     }
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Reply: 
-            <input className="reply" type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <div>        <form onSubmit={this.handleSubmit}>
+        <label>
+          Reply: 
+          <input className="reply" type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      <div id="ReplyFormConfirmation"></div>
+</div>
+
       );
     }
   }

@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-
+//This AddBlogPost component handles adding a new blog post to the database.
 class AddBlogPost extends React.Component {
     constructor(props) {
       super(props);
@@ -19,12 +19,12 @@ class AddBlogPost extends React.Component {
     }
   
     handleSubmit = async function (event) {
-
+      let confirmation = ""
 
         try {
 
            // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("https://personalsite-backend.herokuapp.com/addblogpost",
+            let response = fetch("http://localhost:5000/addblogpost",
             
             {
                 method: "POST",
@@ -34,15 +34,19 @@ class AddBlogPost extends React.Component {
                 }
             
             })
+            confirmation = "success"
+            document.getElementById("confirmation").innerText = confirmation
 
 
         } catch (error) {
-            console.log(error)
+          document.getElementById("confirmation").innerText = confirmation
+            console.log("there was an error" + error)
         }
     }
   
     render() {
       return (
+        <div>          
         <form onSubmit={this.handleSubmit}>
             <div>          <label>
             Title: 
@@ -56,6 +60,8 @@ class AddBlogPost extends React.Component {
 
           <input type="submit" value="Submit" />
         </form>
+        <div id="confirmation"></div>
+        </div>
       );
     }
   }

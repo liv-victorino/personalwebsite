@@ -1,17 +1,17 @@
 import './App.css';
 import React, { useState } from 'react';
-//import { render } from 'react-dom';
 import { BrowserRouter, Route, Routes} from 'react-router-dom'; 
 import NewBlog from './components/NewBlog'
 import LoginPage from './components/LoginPage'
-//import express from "express"
 import Questions from "./components/Questions"
-import { NavLink } from 'react-router-dom'
-{/*  //change to navelink,  */}
+
+
+//This is the main page which renders the blog and routes the other pages
 
 function App() {
   const [userSubmission, setSubmission] = useState();
-  //showing={isShown} changeShowing={setIsShown}
+
+  
   return (
     <div className="App">
       <h1>Alt-Z; hello I'm Liv</h1>

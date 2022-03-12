@@ -5,7 +5,8 @@ import Login from './LoginPage'
 import React, { useState, useEffect } from 'react';
 
 
-//TODO: write onClick submit function and index.js import? also figure out why not published on ghp
+//Questions element grabs questions from the database and displays them. 
+//It also loads the reply form and the login form.
 
 function Questions (){
 
@@ -15,41 +16,34 @@ function Questions (){
 
     
     useEffect(() => {
+        try {
+            
 
-/*         const isLoggedIn = async () => {
-            const response = await fetch(`https://personalsite-backend.herokuapp.com/isAdmin`);
-            const newData = await response.json();
-
-            console.log(JSON.stringify(newData))
-          };
-         */
         const fetchData = async () => {
-            const response = await fetch(`https://personalsite-backend.herokuapp.com/posts`);
+            const response = await fetch(`http://localhost:5000/posts`);
             const newData = await response.json();
-            //console.log(JSON.stringify(newData))
             setState(newData)
-            //console.log("this isthe state now: " + JSON.stringify(state))
           };
-
-
-          //sLoggedIn();
 
           fetchData();
-        
+        } catch (error) {
+            document.getElementById("LoadQConfirmation").innerText = "error" + error
+        }
 
     }, [])
 
     
 
 
+
+
         //for every question in the list, create a new post and then display it!
-
-
 
     return(
         
         <div className="postList">
             <h2>questions and advice</h2>
+            <h1 id="LoadQConfirmation"></h1>
             <QuestionsForm></QuestionsForm>
 
             <br></br>
@@ -67,8 +61,6 @@ function Questions (){
                {
                console.log(JSON.stringify(userState.username) === "liverino")}{
                userState.username === "liverino" &&
-               
-               
                <ReplyForm post={d._id}></ReplyForm>     
                
                }  
