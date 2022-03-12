@@ -21,7 +21,7 @@ class QuestionsForm extends React.Component {
 
         let confirmation = ""
         try {
-            let response = fetch("http://localhost:5000/posts",
+            let response = fetch("https://personalsite-backend.herokuapp.com/posts",
             
             {
                 method: "POST",

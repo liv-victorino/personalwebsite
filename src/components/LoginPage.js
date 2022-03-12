@@ -16,8 +16,8 @@ function Login(props) {
 
         try {
             let response = await fetch(
-                //http://localhost:5000/
-                "http://localhost:5000/login",
+                //https://personalsite-backend.herokuapp.com/
+                "https://personalsite-backend.herokuapp.com/login",
                 {
                     method: "POST",
                     body: JSON.stringify(loginData),
@@ -42,7 +42,7 @@ function Login(props) {
         try {
             
         let response = await fetch(
-            'http://localhost:5000/logout',
+            'https://personalsite-backend.herokuapp.com/logout',
             {
                 method: "POST"
             }

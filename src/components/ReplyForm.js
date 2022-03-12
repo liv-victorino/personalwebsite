@@ -20,7 +20,7 @@ class ReplyForm extends React.Component {
         try {
 
            // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("http://localhost:5000/reply",
+            let response = fetch("https://personalsite-backend.herokuapp.com/reply",
             
             {
                 method: "POST",

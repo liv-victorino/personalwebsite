@@ -24,7 +24,7 @@ class AddBlogPost extends React.Component {
         try {
 
            // console.log("we got to the sumbit + " + this.state)
-            let response = fetch("http://localhost:5000/addblogpost",
+            let response = fetch("https://personalsite-backend.herokuapp.com/addblogpost",
             
             {
                 method: "POST",
