@@ -34,8 +34,6 @@ function App() {
             <Route exact path="/login" element={<LoginPage></LoginPage>}></Route>
             <Route exact path="/newpost" element={<AddBlogPost></AddBlogPost>}></Route>
       </Routes>
-
-
       </BrowserRouter>
       </div>
       </div>

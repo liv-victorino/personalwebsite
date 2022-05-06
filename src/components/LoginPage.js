@@ -47,7 +47,7 @@ function Login(props) {
                 method: "POST"
             }
         )
-        let responesText = await response.text();
+        let responseText = await response.text();
         props.userChange({username: ""})
             confirmation = "logout succeeded"
         } catch (error) {
