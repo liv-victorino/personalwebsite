@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import NewBlog from './components/NewBlog'
 import LoginPage from './components/LoginPage'
 import Questions from "./components/Questions"
+import AddBlogPost from './components/AddBlogPost';
 
 
 //This is the main page which renders the blog and routes the other pages
@@ -21,8 +22,7 @@ function App() {
         <a className="link" href="https://open.spotify.com/artist/3YIrk6wfKAjdNp3hwaZPyQ?si=MhN4l-TXSP6lhHV7MDvpZQ">Spotify :)</a>
         <a className="link" href="https://livvictorino.bandcamp.com/album/sheer-force-of-will">Bandcamp :^)</a>
         <a className="link" href="https://www.youtube.com/channel/UC2Dlu_LLlFjDIw2zr3Abm2g">YouTube ,':)</a>
-        <a className='link' style={{color: "#C0DFFF"}} href="https://www.liv-victorino.com/login">ADMIN</a>
-        <a className='link' style={{color: "#C0DFFF"}} href="https://www.liv-victorino.com/questions">QUESTIONS</a>
+        <a className='link' href="https://www.liv-victorino.com/questions">QUESTIONS</a>
       </div>
        
       <hr></hr>
@@ -32,6 +32,7 @@ function App() {
             <Route exact path="/" element={<NewBlog />}></Route>
             <Route exact path="/questions" element={<Questions questionsMock={userSubmission} changeSubmission={setSubmission}></Questions>}></Route>
             <Route exact path="/login" element={<LoginPage></LoginPage>}></Route>
+            <Route exact path="/newpost" element={<AddBlogPost></AddBlogPost>}></Route>
       </Routes>
 
 

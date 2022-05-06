@@ -1,5 +1,4 @@
 import '../App.css'
-import AddBlogPost from './AddBlogPost';
 
 import React, { useState, useEffect } from 'react';
 
@@ -43,7 +42,6 @@ function NewBlog (){
         <div className="postList">
 
             <h2>blog</h2>
-            <AddBlogPost></AddBlogPost>
 
             <br></br>
             <>
@@ -58,11 +56,18 @@ function NewBlog (){
                 
                 )}        
             </>
+
+               
+
+
+
         </div>
 
 
     )
 }
+
+
 
 export default NewBlog;
 
